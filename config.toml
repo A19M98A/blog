@@ -1,4 +1,4 @@
-baseURL = "https://example.com"
+baseURL = "https://stellular-peony-f1b18e.netlify.app"
 title = "Your title"
 # themes = "profile"
 theme = "m10c"
