@@ -22,7 +22,8 @@ paginate = 8
     weight = 3
 
 [params]
-  author = "John Doe"
+  author = "AminAllah Janipoor"
+  avatar = "./static/avatar.webp"
   description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
   menu_item_separator = " - "
   [[params.social]]
