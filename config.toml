@@ -23,7 +23,7 @@ paginate = 8
 
 [params]
   author = "AminAllah Janipoor"
-  avatar = "./static/avatar.webp"
+  avatar = "avatar.webp"
   description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
   menu_item_separator = " - "
   [[params.social]]
