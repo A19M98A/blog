@@ -24,16 +24,16 @@ paginate = 8
 [params]
   author = "AminAllah Janipoor"
   avatar = "avatar.webp"
-  description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+  description = "Smile to Life :)"
   menu_item_separator = " - "
   [[params.social]]
     icon = "github"
     name = "Github"
-    url = "https://github.com/gohugoio"
-  [[params.social]]
-    icon = "twitter"
-    name = "Twitter"
-    url = "https://twitter.com/gohugoio"
+    url = "https://github.com/A19M98A"
+  # [[params.social]]
+  #   icon = "twitter"
+  #   name = "Twitter"
+  #   url = "https://twitter.com/gohugoio"
 
   # Default theme
   #[params.style]
