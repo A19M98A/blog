@@ -1,6 +1,6 @@
 +++
 title = "Chapter 1: Unveiling the vision"
-tags = ["Exploring Innovation: My Implementation Journey with gem5 Simulator"]
+tags = ["Exploring Innovation"]
 date = "2023-08-15"
 +++
 
