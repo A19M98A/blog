@@ -3,7 +3,6 @@ title = "Chapter 1: Unveiling the vision"
 tags = ["Exploring Innovation"]
 date = "2023-08-15"
 +++
-# Chapter 1: The Genesis of Innovation
 
 *Welcome to a blog series that traces the birth and evolution of my idea through its implementation in the gem5 simulator. In this first chapter, I'll introduce the driving force behind my project and its potential significance in the world of computer architecture.*
 
