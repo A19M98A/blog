@@ -13,4 +13,12 @@ date = "2025-01-31"
 
 ![Alt text](temp.png)
 
+## 2
+
+[<img src="/static/temp.png">](https://aminjanipoor.ir)
+
+## 3
+
+[<img src="temp.png">](https://aminjanipoor.ir)
+
 *[End]*
