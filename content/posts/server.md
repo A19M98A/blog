@@ -11,7 +11,7 @@ date = "2025-01-31"
 
 ## Image (scan tht)
 
-![Alt text](temp.png)
+![Alt text](https://github.com/A19M98A/blog/blob/main/static/temp.png)
 
 ## 2
 
