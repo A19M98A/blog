@@ -19,6 +19,6 @@ date = "2025-01-31"
 
 ## 3
 
-[<img src="temp.png">](https://aminjanipoor.ir)
+[<img src="https://github.com/A19M98A/blog/blob/main/static/temp.png">](https://aminjanipoor.ir)
 
 *[End]*
