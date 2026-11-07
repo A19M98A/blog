@@ -1,10 +1,10 @@
 {{ define "main" }}
 <div class="crumbs"><a href="{{ "/" | relURL }}">~</a>{{ strings.TrimSuffix "/" .RelPermalink }}</div>
-<h1 class="page-title">{{ .Title | lower }}</h1>
-<div class="page-meta"><span><span class="k">$ ls</span> {{ len .Data.Terms }} {{ .Data.Plural }}</span></div>
+<h1 class="page-title">{{ .Title }}</h1>
+<p class="page-lead">Everything on the site, grouped by topic.</p>
 <ul class="tag-cloud">
   {{- range .Data.Terms.ByCount }}
-  <li><a href="{{ .Page.RelPermalink }}">#{{ .Page.Title | urlize }} <span class="n">{{ .Count }}</span></a></li>
+  <li><a href="{{ .Page.RelPermalink }}">{{ .Page.Title | urlize }} <span class="n">{{ .Count }}</span></a></li>
   {{- end }}
 </ul>
 {{ end }}

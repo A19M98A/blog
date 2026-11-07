@@ -1,40 +1,49 @@
 {{ define "main" }}
 {{- $p := hugo.Data.profile }}
-<section class="term" aria-label="intro">
-  <div class="term-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="term-title">{{ site.Params.handle | default "amin" }}@janipoor: ~ — zsh</span></div>
-  <div class="term-body">
-    <p class="cmd">whoami</p>
-    <h1 class="hero-name">{{ with $p.first }}<span class="hl">{{ . }}</span>{{ end }} {{ $p.last }}</h1>
-    <p class="out hero-role">{{ $p.headline }}</p>
-
-    {{- with $p.location }}
-    <p class="cmd">cat location.txt</p>
-    <p class="out">{{ . }}</p>
-    {{- end }}
-
-    {{- with $p.interests }}
-    <p class="cmd">ls interests/</p>
-    <ul class="chips">{{ range . }}<li class="chip">{{ . }}</li>{{ end }}</ul>
-    {{- end }}
-
-    <p class="cmd">open --links</p>
-    <div class="out links-row">
-      <a href="{{ "about/" | relURL }}">about.md</a>
-      <a href="{{ "posts/" | relURL }}">posts/</a>
-      {{- range site.Params.social }}<a href="{{ .url }}" target="_blank" rel="noopener noreferrer me">{{ .name | lower }}</a>{{ end }}
+<section class="hero" aria-label="Introduction">
+  <img class="avatar" src="{{ site.Params.avatar | relURL }}" alt="Photo of {{ $p.first }} {{ $p.last }}" width="132" height="132">
+  <div>
+    <p class="hero-hello">$ whoami</p>
+    <h1>Hi, I'm {{ site.Params.nickname | default $p.first }} 👋</h1>
+    <p class="hero-lead">{{ $p.intro | markdownify }}</p>
+    <div class="btn-row">
+      <a class="btn primary" href="{{ "projects/" | relURL }}">See my projects {{ partial "icons.html" "arrow" }}</a>
+      <a class="btn" href="{{ "posts/" | relURL }}">Read the blog</a>
+      <a class="btn" href="{{ "about/" | relURL }}">About me</a>
     </div>
-    <p class="cmd" style="margin:0"><span class="cursor" aria-hidden="true"></span></p>
   </div>
 </section>
 
-{{- $posts := where site.RegularPages "Section" "posts" }}
-<h2 class="section-title">ls -lt ~/posts | head -{{ site.Params.homePosts | default 6 }}</h2>
-<ul class="ls">
-  {{- range first (site.Params.homePosts | default 6) $posts.ByDate.Reverse }}
-    {{ partial "post-item.html" . }}
+{{- with $p.now }}
+<div class="now">
+  {{- range . }}
+  <div class="now-item"><div class="k">{{ .k }}</div><div class="v">{{ .v | markdownify }}</div></div>
   {{- end }}
-</ul>
-{{- if gt (len $posts) (site.Params.homePosts | default 6) }}
-<p style="margin-top:16px"><a href="{{ "posts/" | relURL }}">→ all {{ len $posts }} posts</a></p>
+</div>
 {{- end }}
+
+{{- $projects := where site.RegularPages "Section" "projects" }}
+{{- $featured := where $projects "Params.featured" true }}
+{{- with $featured }}
+<section class="section">
+  <div class="section-head">
+    <h2>Featured projects</h2>
+    <a class="more" href="{{ "projects/" | relURL }}">All {{ len $projects }} projects →</a>
+  </div>
+  <div class="cards">
+    {{- range .ByWeight }}{{ partial "project-card.html" . }}{{ end }}
+  </div>
+</section>
+{{- end }}
+
+{{- $posts := where site.RegularPages "Section" "posts" }}
+<section class="section">
+  <div class="section-head">
+    <h2>Latest writing</h2>
+    <a class="more" href="{{ "posts/" | relURL }}">All posts →</a>
+  </div>
+  <ul class="posts">
+    {{- range first (site.Params.homePosts | default 5) $posts.ByDate.Reverse }}{{ partial "post-item.html" . }}{{ end }}
+  </ul>
+</section>
 {{ end }}

@@ -1,10 +1,23 @@
 <footer class="site-footer">
-  <div class="wrap">
-    <span>© {{ now.Year }} {{ site.Params.author }} · built with <a href="https://gohugo.io">hugo</a> · <a href="{{ "index.xml" | relURL }}">rss</a></span>
-    <span class="socials">
-      {{- range site.Params.social }}
-        <a href="{{ .url }}" target="_blank" rel="noopener noreferrer me">{{ .name | lower }}</a>
-      {{- end }}
+  <div class="wrap wide">
+    <span>© {{ now.Year }} {{ site.Params.author }}</span>
+    <span class="footer-links">
+      <a href="{{ "tags/" | relURL }}">Tags</a>
+      <a href="{{ "index.xml" | relURL }}">RSS</a>
+      {{- range site.Params.social }}<a href="{{ .url }}" target="_blank" rel="noopener noreferrer me">{{ .name }}</a>{{ end }}
     </span>
+    <span class="footer-hint">press <kbd>/</kbd> to search · <kbd>t</kbd> to switch theme</span>
   </div>
 </footer>
+<div class="search-dialog" role="dialog" aria-modal="true" aria-label="Search the site" data-index="{{ "index.json" | relURL }}">
+  <div class="search-panel">
+    <div class="search-input-row">
+      {{ partial "icons.html" "search" }}
+      <label class="sr-only" for="search-input">Search posts and projects</label>
+      <input id="search-input" class="search-input" type="search" placeholder="Search posts and projects…" autocomplete="off" spellcheck="false">
+      <span class="kbd">esc</span>
+    </div>
+    <ul class="search-results" role="listbox"></ul>
+    <div class="search-foot"><span><kbd>↑</kbd> <kbd>↓</kbd> to move</span><span><kbd>enter</kbd> to open</span></div>
+  </div>
+</div>

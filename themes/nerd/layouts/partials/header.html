@@ -1,16 +1,17 @@
 <div class="progress" aria-hidden="true"></div>
 <header class="site-header">
-  <div class="wrap">
-    <a class="prompt-home" href="{{ "/" | relURL }}" aria-label="{{ site.Title }} — home">
-      <span class="user">{{ site.Params.handle | default "amin" }}</span><span class="at">@</span><span class="host">janipoor</span><span class="colon">:</span><span class="path">~{{ if not .IsHome }}{{ strings.TrimSuffix "/" .RelPermalink }}{{ end }}</span><span class="at">$</span>
+  <div class="wrap wide">
+    <a class="logo" href="{{ "/" | relURL }}" aria-label="{{ site.Params.author }}, home">
+      <span class="logo-mark" aria-hidden="true">&gt;_</span><span>amin<span class="tilde">@janipoor</span></span>
     </a>
-    <nav class="nav" aria-label="main">
+    <nav class="nav" aria-label="Main">
       {{- $current := . }}
       {{- range site.Menus.main }}
-        {{- $active := or ($current.IsMenuCurrent "main" .) ($current.HasMenuCurrent "main" .) (eq $current.RelPermalink .URL) }}
+        {{- $active := or ($current.IsMenuCurrent "main" .) ($current.HasMenuCurrent "main" .) (eq $current.RelPermalink .URL) (and (ne .URL "/") (hasPrefix $current.RelPermalink .URL)) }}
         <a href="{{ .URL | relURL }}"{{ if $active }} aria-current="page"{{ end }}>{{ .Name }}</a>
       {{- end }}
-      <button class="theme-toggle" type="button" aria-label="toggle light/dark theme" title="toggle theme (t)">◐</button>
+      <button class="icon-btn search-btn" type="button" aria-label="Search" title="Search (/)">{{ partial "icons.html" "search" }}<span class="kbd">/</span></button>
+      <button class="icon-btn theme-toggle" type="button" aria-label="Toggle light or dark theme" title="Toggle theme (t)">{{ partial "icons.html" "theme" }}</button>
     </nav>
   </div>
 </header>

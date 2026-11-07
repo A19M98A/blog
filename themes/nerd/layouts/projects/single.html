@@ -1,0 +1,39 @@
+{{ define "main" }}
+<article>
+  <header class="proj-head">
+    <div class="crumbs"><a href="{{ "/" | relURL }}">~</a>/<a href="{{ "projects/" | relURL }}">projects</a>/{{ .File.ContentBaseName }}</div>
+    <h1 class="page-title">{{ .Title }}</h1>
+    <p class="page-lead">{{ .Summary | plainify }}</p>
+    <div class="page-meta">
+      {{- with .Params.status }}<span class="badge {{ . }}">{{ . }}</span>{{ end }}
+      {{- with .Params.language }}<span class="lang" data-lang="{{ . }}">{{ . }}</span>{{ end }}
+      <span class="mono">{{ .Date.Format "Jan 2006" }} → {{ .Lastmod.Format "Jan 2006" }}</span>
+    </div>
+    {{- with .Params.stack }}<ul class="chips" aria-label="Tech stack">{{ range . }}<li class="chip">{{ . }}</li>{{ end }}</ul>{{ end }}
+    <div class="btn-row">
+      {{- with .Params.repo }}<a class="btn primary" href="{{ . }}" target="_blank" rel="noopener noreferrer">{{ partial "icons.html" "github" }} View on GitHub</a>{{ end }}
+      <a class="btn" href="{{ "projects/" | relURL }}">All projects</a>
+    </div>
+  </header>
+
+  {{- if and (gt .WordCount 450) (ne .Params.toc false) }}
+    {{- with .TableOfContents }}{{ if ne . "<nav id=\"TableOfContents\"></nav>" }}
+  <details class="toc"><summary>On this page</summary>{{ . }}</details>
+    {{- end }}{{ end }}
+  {{- end }}
+
+  <div class="prose">{{ .Content }}</div>
+
+  {{- with .Params.tags }}
+  <div class="post-tags">{{ range . }}<a class="tag" href="{{ (printf "tags/%s/" (. | urlize)) | relURL }}">{{ . | urlize }}</a>{{ end }}</div>
+  {{- end }}
+
+  {{- $related := first 3 (where (site.RegularPages.Related .) "Section" "projects") }}
+  {{- with $related }}
+  <section class="section">
+    <div class="section-head"><h2>Related projects</h2></div>
+    <div class="cards">{{ range . }}{{ partial "project-card.html" . }}{{ end }}</div>
+  </section>
+  {{- end }}
+</article>
+{{ end }}

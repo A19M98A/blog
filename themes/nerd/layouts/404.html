@@ -1,17 +1,18 @@
 {{ define "main" }}
-<section class="term">
-  <div class="term-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="term-title">exit code 404</span></div>
+<h1 class="page-title">Page not found</h1>
+<p class="page-lead">That page doesn't exist, or it moved. Here's what the terminal thinks:</p>
+<div class="term">
+  <div class="term-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></div>
   <div class="term-body">
     <p class="cmd">cd <span id="lost-path">this-page</span></p>
-    <p class="out err">zsh: no such file or directory</p>
-    <p class="cmd">suggest</p>
-    <div class="out links-row">
-      <a href="{{ "/" | relURL }}">cd ~</a>
-      <a href="{{ "posts/" | relURL }}">ls posts/</a>
-      <a href="{{ "about/" | relURL }}">cat about.md</a>
-    </div>
-    <p class="cmd" style="margin:0"><span class="cursor" aria-hidden="true"></span></p>
+    <p class="err">zsh: no such file or directory</p>
+    <p class="cmd"><span class="cursor" aria-hidden="true"></span></p>
   </div>
-</section>
+</div>
+<div class="btn-row" style="margin-top:24px">
+  <a class="btn primary" href="{{ "/" | relURL }}">Go home</a>
+  <a class="btn" href="{{ "projects/" | relURL }}">Projects</a>
+  <a class="btn" href="{{ "posts/" | relURL }}">Posts</a>
+</div>
 <script>document.getElementById("lost-path").textContent = location.pathname;</script>
 {{ end }}

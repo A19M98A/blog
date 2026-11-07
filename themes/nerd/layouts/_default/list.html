@@ -1,12 +1,23 @@
 {{ define "main" }}
 <div class="crumbs"><a href="{{ "/" | relURL }}">~</a>{{ strings.TrimSuffix "/" .RelPermalink }}</div>
-<h1 class="page-title">{{ if eq .Kind "term" }}<span class="tag">{{ .Title | urlize }}</span>{{ else }}{{ .Title }}{{ end }}</h1>
-<div class="page-meta"><span><span class="k">total</span> {{ len .Pages }} {{ if eq (len .Pages) 1 }}entry{{ else }}entries{{ end }}</span></div>
+<h1 class="page-title">{{ if eq .Kind "term" }}#{{ .Title | urlize }}{{ else }}{{ .Title }}{{ end }}</h1>
+{{- with .Description }}<p class="page-lead">{{ . }}</p>{{ end }}
+<div class="page-meta"><span>{{ len .Pages }} {{ if eq (len .Pages) 1 }}entry{{ else }}entries{{ end }}</span>{{ if ne .Kind "term" }}<span class="sep">·</span><a href="{{ "tags/" | relURL }}">browse by tag</a>{{ end }}</div>
 {{ with .Content }}<div class="prose">{{ . }}</div>{{ end }}
-{{- range .Pages.GroupByDate "2006" }}
+{{- if eq .Kind "term" }}
+  {{- $projects := where .Pages "Section" "projects" }}
+  {{- with $projects }}
+  <h2 class="year">projects</h2>
+  <div class="cards">{{ range .ByWeight }}{{ partial "project-card.html" . }}{{ end }}</div>
+  {{- end }}
+  {{- with where .Pages "Section" "posts" }}
+  <h2 class="year">posts</h2>
+  <ul class="posts">{{ range . }}{{ partial "post-item.html" . }}{{ end }}</ul>
+  {{- end }}
+{{- else }}
+  {{- range .Pages.GroupByDate "2006" }}
   <h2 class="year">{{ .Key }}</h2>
-  <ul class="ls">
-    {{- range .Pages }}{{ partial "post-item.html" . }}{{ end }}
-  </ul>
+  <ul class="posts">{{ range .Pages }}{{ partial "post-item.html" . }}{{ end }}</ul>
+  {{- end }}
 {{- end }}
 {{ end }}

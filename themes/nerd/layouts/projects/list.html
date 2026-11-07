@@ -1,0 +1,9 @@
+{{ define "main" }}
+<div class="crumbs"><a href="{{ "/" | relURL }}">~</a>/projects</div>
+<h1 class="page-title">{{ .Title }}</h1>
+<div class="prose page-lead">{{ .Content }}</div>
+<div class="page-meta"><span>{{ len .Pages }} projects</span><span class="sep">·</span><span>newest activity first</span></div>
+<div class="cards">
+  {{- range .Pages.ByLastmod.Reverse }}{{ partial "project-card.html" . }}{{ end }}
+</div>
+{{ end }}

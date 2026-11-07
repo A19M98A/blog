@@ -19,24 +19,36 @@ enableRobotsTXT = true
 
 [menu]
   [[menu.main]]
-    name = "posts"
-    url = "/posts/"
+    name = "Projects"
+    url = "/projects/"
     weight = 1
   [[menu.main]]
-    name = "tags"
-    url = "/tags/"
+    name = "Posts"
+    url = "/posts/"
     weight = 2
   [[menu.main]]
-    name = "about"
+    name = "About"
     url = "/about/"
     weight = 3
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+[related]
+  includeNewer = true
+  threshold = 50
+  toLower = true
+  [[related.indices]]
+    name = "tags"
+    weight = 100
 
 [params]
   author = "AminAllah Janipoor"
   handle = "amin"
   avatar = "avatar.webp"
   description = "PhD student in computer hardware engineering at the University of Tehran. Notes on computer architecture, gem5, systems and side projects."
-  homePosts = 6
+  homePosts = 5
+  nickname = "Amin"
 
   [[params.social]]
     name = "GitHub"

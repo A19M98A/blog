@@ -19,6 +19,19 @@ summary: |
   hacking on networking and systems side projects. This blog is where I write
   down what I learn along the way.
 
+intro: >-
+  I'm a **PhD student in computer hardware engineering** at the University of
+  Tehran. I study how caches and memory systems work by simulating them in gem5,
+  and I build small, keyboard-friendly tools for the terminal along the way.
+
+now:
+  - k: "studying"
+    v: "PhD, University of Tehran"
+  - k: "researching"
+    v: "Cache architectures in gem5"
+  - k: "building"
+    v: "[ocpanel](/projects/ocpanel/), a split-tunnel VPN panel"
+
 interests:
   - computer-architecture
   - hardware
