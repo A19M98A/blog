@@ -1,0 +1,40 @@
+{{ define "main" }}
+{{- $p := hugo.Data.profile }}
+<section class="term" aria-label="intro">
+  <div class="term-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="term-title">{{ site.Params.handle | default "amin" }}@janipoor: ~ — zsh</span></div>
+  <div class="term-body">
+    <p class="cmd">whoami</p>
+    <h1 class="hero-name">{{ with $p.first }}<span class="hl">{{ . }}</span>{{ end }} {{ $p.last }}</h1>
+    <p class="out hero-role">{{ $p.headline }}</p>
+
+    {{- with $p.location }}
+    <p class="cmd">cat location.txt</p>
+    <p class="out">{{ . }}</p>
+    {{- end }}
+
+    {{- with $p.interests }}
+    <p class="cmd">ls interests/</p>
+    <ul class="chips">{{ range . }}<li class="chip">{{ . }}</li>{{ end }}</ul>
+    {{- end }}
+
+    <p class="cmd">open --links</p>
+    <div class="out links-row">
+      <a href="{{ "about/" | relURL }}">about.md</a>
+      <a href="{{ "posts/" | relURL }}">posts/</a>
+      {{- range site.Params.social }}<a href="{{ .url }}" target="_blank" rel="noopener noreferrer me">{{ .name | lower }}</a>{{ end }}
+    </div>
+    <p class="cmd" style="margin:0"><span class="cursor" aria-hidden="true"></span></p>
+  </div>
+</section>
+
+{{- $posts := where site.RegularPages "Section" "posts" }}
+<h2 class="section-title">ls -lt ~/posts | head -{{ site.Params.homePosts | default 6 }}</h2>
+<ul class="ls">
+  {{- range first (site.Params.homePosts | default 6) $posts.ByDate.Reverse }}
+    {{ partial "post-item.html" . }}
+  {{- end }}
+</ul>
+{{- if gt (len $posts) (site.Params.homePosts | default 6) }}
+<p style="margin-top:16px"><a href="{{ "posts/" | relURL }}">→ all {{ len $posts }} posts</a></p>
+{{- end }}
+{{ end }}

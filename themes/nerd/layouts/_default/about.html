@@ -1,0 +1,60 @@
+{{ define "main" }}
+{{- $p := hugo.Data.profile }}
+<article>
+  <div class="crumbs"><a href="{{ "/" | relURL }}">~</a>/about.md</div>
+  <h1 class="page-title">{{ $p.first }} {{ $p.last }}</h1>
+  <div class="page-meta">
+    {{- with $p.headline }}<span><span class="k">role</span> {{ . }}</span>{{ end }}
+    {{- with $p.location }}<span><span class="k">loc</span> {{ . }}</span>{{ end }}
+  </div>
+
+  {{- with $p.summary }}<div class="prose">{{ . | markdownify }}</div>{{ end }}
+  {{- with .Content }}<div class="prose">{{ . }}</div>{{ end }}
+
+  {{- with $p.experience }}
+  <h2 class="section-title">git log --experience</h2>
+  {{- range $i, $e := . }}
+  <div class="cv-entry">
+    <span class="cv-hash">{{ substr (md5 (printf "%s%s" $e.org $e.role)) 0 7 }}</span>
+    <span class="cv-when">{{ $e.start }} → {{ $e.end | default "present" }}{{ with $e.location }} · {{ . }}{{ end }}</span><br>
+    <span class="cv-role">{{ $e.role }}</span> <span class="cv-org">@ {{ $e.org }}</span>
+    {{- with $e.description }}<p>{{ . | markdownify }}</p>{{ end }}
+    {{- with $e.bullets }}<ul>{{ range . }}<li>{{ . | markdownify }}</li>{{ end }}</ul>{{ end }}
+  </div>
+  {{- end }}
+  {{- end }}
+
+  {{- with $p.education }}
+  <h2 class="section-title">cat education.log</h2>
+  {{- range . }}
+  <div class="cv-entry">
+    <span class="cv-when">{{ .start }} → {{ .end | default "present" }}</span><br>
+    <span class="cv-role">{{ .degree }}</span> <span class="cv-org">@ {{ .school }}</span>
+    {{- with .note }}<p>{{ . | markdownify }}</p>{{ end }}
+  </div>
+  {{- end }}
+  {{- end }}
+
+  {{- with $p.skills }}
+  <h2 class="section-title">pkg list --installed</h2>
+  <div class="skills">
+    {{- range . }}
+    <div class="skill-group">
+      <h3>{{ .group }}</h3>
+      <ul class="chips">{{ range .items }}<li class="chip">{{ . }}</li>{{ end }}</ul>
+    </div>
+    {{- end }}
+  </div>
+  {{- end }}
+
+  {{- with $p.languages }}
+  <h2 class="section-title">locale -a</h2>
+  <ul class="chips">{{ range . }}<li class="chip">{{ . }}</li>{{ end }}</ul>
+  {{- end }}
+
+  <h2 class="section-title">contact</h2>
+  <div class="links-row">
+    {{- range site.Params.social }}<a href="{{ .url }}" target="_blank" rel="noopener noreferrer me">{{ .name | lower }}</a>{{ end }}
+  </div>
+</article>
+{{ end }}

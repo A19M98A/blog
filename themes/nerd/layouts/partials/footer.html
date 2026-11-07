@@ -1,0 +1,10 @@
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© {{ now.Year }} {{ site.Params.author }} · built with <a href="https://gohugo.io">hugo</a> · <a href="{{ "index.xml" | relURL }}">rss</a></span>
+    <span class="socials">
+      {{- range site.Params.social }}
+        <a href="{{ .url }}" target="_blank" rel="noopener noreferrer me">{{ .name | lower }}</a>
+      {{- end }}
+    </span>
+  </div>
+</footer>

@@ -1,60 +1,46 @@
-baseURL = "https://aminjanipoor.ir"
+baseURL = "https://aminjanipoor.ir/"
 title = "AM.A"
-# themes = "profile"
-theme = "m10c"
-paginate = 8
+locale = "en-us"
+theme = "nerd"
+enableRobotsTXT = true
+
+[pagination]
+  pagerSize = 20
+
+[markup]
+  [markup.highlight]
+    noClasses = false
+    lineNos = false
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 3
+  [markup.goldmark.renderer]
+    unsafe = true
 
 [menu]
   [[menu.main]]
-    identifier = "home"
-    name = "Home"
-    url = "/"
+    name = "posts"
+    url = "/posts/"
     weight = 1
   [[menu.main]]
-    identifier = "tags"
-    name = "Tags"
+    name = "tags"
     url = "/tags/"
     weight = 2
   [[menu.main]]
-    identifier = "about"
-    name = "About"
+    name = "about"
     url = "/about/"
     weight = 3
 
 [params]
   author = "AminAllah Janipoor"
+  handle = "amin"
   avatar = "avatar.webp"
-  description = "Smile to Life :)"
-  menu_item_separator = " - "
+  description = "PhD student in computer hardware engineering at the University of Tehran. Notes on computer architecture, gem5, systems and side projects."
+  homePosts = 6
+
   [[params.social]]
-    icon = "github"
-    name = "Github"
+    name = "GitHub"
     url = "https://github.com/A19M98A"
-  # [[params.social]]
-  #   icon = "twitter"
-  #   name = "Twitter"
-  #   url = "https://twitter.com/gohugoio"
-
-  # Default theme
-  #[params.style]
-  #  darkestColor = "#242930"
-  #  darkColor = "#353b43"
-  #  lightColor = "#afbac4"
-  #  lightestColor = "#ffffff"
-  #  primaryColor = "#57cc8a"
-
-  # Green theme
-  #[params.style]
-  #  darkestColor = "#315659"
-  #  darkColor = "#253031"
-  #  lightColor = "#96a879"
-  #  lightestColor = "#fff"
-  #  primaryColor = "#dad865"
-
-  # Red theme
-  #[params.style]
-  #  darkestColor = "#d35050"
-  #  darkColor = "#212121"
-  #  lightColor = "#d6d6d6"
-  #  lightestColor = "#d3d3d3"
-  #  primaryColor = "#ffffff"
+  [[params.social]]
+    name = "LinkedIn"
+    url = "https://www.linkedin.com/in/aminjani/"

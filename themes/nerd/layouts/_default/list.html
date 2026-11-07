@@ -1,0 +1,12 @@
+{{ define "main" }}
+<div class="crumbs"><a href="{{ "/" | relURL }}">~</a>{{ strings.TrimSuffix "/" .RelPermalink }}</div>
+<h1 class="page-title">{{ if eq .Kind "term" }}<span class="tag">{{ .Title | urlize }}</span>{{ else }}{{ .Title }}{{ end }}</h1>
+<div class="page-meta"><span><span class="k">total</span> {{ len .Pages }} {{ if eq (len .Pages) 1 }}entry{{ else }}entries{{ end }}</span></div>
+{{ with .Content }}<div class="prose">{{ . }}</div>{{ end }}
+{{- range .Pages.GroupByDate "2006" }}
+  <h2 class="year">{{ .Key }}</h2>
+  <ul class="ls">
+    {{- range .Pages }}{{ partial "post-item.html" . }}{{ end }}
+  </ul>
+{{- end }}
+{{ end }}

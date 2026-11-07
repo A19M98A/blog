@@ -1,0 +1,16 @@
+<div class="progress" aria-hidden="true"></div>
+<header class="site-header">
+  <div class="wrap">
+    <a class="prompt-home" href="{{ "/" | relURL }}" aria-label="{{ site.Title }} — home">
+      <span class="user">{{ site.Params.handle | default "amin" }}</span><span class="at">@</span><span class="host">janipoor</span><span class="colon">:</span><span class="path">~{{ if not .IsHome }}{{ strings.TrimSuffix "/" .RelPermalink }}{{ end }}</span><span class="at">$</span>
+    </a>
+    <nav class="nav" aria-label="main">
+      {{- $current := . }}
+      {{- range site.Menus.main }}
+        {{- $active := or ($current.IsMenuCurrent "main" .) ($current.HasMenuCurrent "main" .) (eq $current.RelPermalink .URL) }}
+        <a href="{{ .URL | relURL }}"{{ if $active }} aria-current="page"{{ end }}>{{ .Name }}</a>
+      {{- end }}
+      <button class="theme-toggle" type="button" aria-label="toggle light/dark theme" title="toggle theme (t)">◐</button>
+    </nav>
+  </div>
+</header>

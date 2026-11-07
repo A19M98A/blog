@@ -1,0 +1,61 @@
+# ---------------------------------------------------------------
+# Profile data: drives the home page hero and the /about/ CV page.
+# Edit this file to update your bio; no template changes needed.
+# Markdown is allowed in summary / description / bullets / note.
+# Source: linkedin.com/in/aminjani (synced 2026-11-08)
+# ---------------------------------------------------------------
+first: "AminAllah"
+last: "Janipoor"
+headline: "PhD student · Computer Hardware Engineering @ University of Tehran"
+location: "Iran"
+
+summary: |
+  Hi, I'm Amin. I'm a PhD student in **Computer Hardware Engineering** at the
+  **University of Tehran**, after a master's in **computer architecture** at
+  Iran University of Science and Technology.
+
+  I like digging into the place where hardware and software meet: simulating
+  processors in [gem5](https://www.gem5.org/), writing low-level C/C++, and
+  hacking on networking and systems side projects. This blog is where I write
+  down what I learn along the way.
+
+interests:
+  - computer-architecture
+  - hardware
+  - gem5
+  - c++
+  - python
+  - systems
+
+# No work experience listed on LinkedIn yet; add entries here when you do.
+experience: []
+#  - role: "Job title"
+#    org: "Company"
+#    start: "2023"
+#    end: ""            # empty = present
+#    location: "City"
+#    description: "One line about the role."
+
+education:
+  - degree: "PhD, Computer Hardware Engineering"
+    school: "University of Tehran"
+    start: "Oct 2025"
+    end: ""
+  - degree: "M.Sc., Computer Architecture"
+    school: "Iran University of Science and Technology"
+    start: "Sep 2021"
+    end: "Oct 2024"
+  - degree: "B.Sc., Computer Engineering"
+    school: "University of Sistan and Baluchestan"
+    start: "Sep 2016"
+    end: "Oct 2021"
+
+skills:
+  - group: "languages"
+    items: ["C++", "C", "C#", "Python", "PHP", "HTML5"]
+  - group: "hardware"
+    items: ["Computer Hardware", "Electrical Engineering", "Computer Architecture", "gem5"]
+  - group: "tools"
+    items: ["Visual Studio", "Software Development", "Linux"]
+
+languages: ["Persian (native)", "English"]

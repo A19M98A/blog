@@ -1,0 +1,4 @@
+name = "nerd"
+license = "MIT"
+description = "A terminal-flavoured Hugo theme"
+min_version = "0.128.0"
